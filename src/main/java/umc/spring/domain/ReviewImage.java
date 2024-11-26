@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -21,4 +23,14 @@ public class ReviewImage extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id")
     private Review review;
+
+    public void setReview(Review review){
+        this.review = review;
+    }
+
+    public void addImagesToReview(Review review, List<ReviewImage> images) {
+        for (ReviewImage image : images) {
+            review.addReviewImage(image);
+        }
+    }
 }

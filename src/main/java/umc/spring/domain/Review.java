@@ -2,6 +2,8 @@ package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -33,5 +37,20 @@ public class Review extends BaseEntity {
     private Store store;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<ReviewImage> reviewImageList = new ArrayList<>();
+
+    // 연관관계 메서드
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public void addReviewImage(ReviewImage image) {
+        reviewImageList.add(image);
+        image.setReview(this);
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
