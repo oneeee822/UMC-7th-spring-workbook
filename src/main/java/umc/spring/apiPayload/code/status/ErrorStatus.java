@@ -30,7 +30,7 @@ public enum ErrorStatus implements BaseErrorCode {
     //회원가입_FoodCategory관련 에러
     FOOD_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST,"CATEGORY4001", "푸드카테고리가 없습니다."),
 
-    //가게리뷰작성 에러
+    //가게 관련 에러
     STORE_NOT_FOUND(HttpStatus.BAD_REQUEST,"STORE4001", "가게가 없습니다.");
 
 
