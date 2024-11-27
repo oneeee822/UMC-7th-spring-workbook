@@ -5,7 +5,7 @@ import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.mapping.MemberMission;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class Mission extends BaseEntity {
     private Integer reward;
 
     @Column(nullable = false)
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String missionSpec;
